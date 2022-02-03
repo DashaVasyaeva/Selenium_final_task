@@ -44,9 +44,9 @@ class ProductPage(BasePage):
         assert self.product_price == msg_lst[2].text, "Wrong price product added to basket"
 
     def should_not_be_success_message(self):
-        assert self.is_not_element_present(*ProductPageLocators.SUCSSESEFUL_MESSAGE), \
+        assert self.is_not_element_present(*ProductPageLocators.SUCCESS_MESSAGE_AFTER_ADD_BASKET), \
             "Success message is presented, but should not be"
 
     def should_disappeared_success_message(self):
-        assert self.is_disappeared(*ProductPageLocators.SUCSSESEFUL_MESSAGE), \
+        assert self.is_disappeared(*ProductPageLocators.SUCCESS_MESSAGE_AFTER_ADD_BASKET), \
             "Success message is not disappeared"
