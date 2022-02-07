@@ -16,12 +16,17 @@ class ProductPage(BasePage):
         assert self.product_price == msg_lst[2].text, "Wrong price product added to basket"
 
     def add_product_to_basket(self):
-        add_to_basket_button = self.browser.find_element(*ProductPageLocators.BTN_ADD_TO_BASKET)
-        add_to_basket_button.click()
-
-    def should_be_add_to_basket_action(self):
+        self.should_be_name()
+        self.should_be_price()
+        self.should_be_description()
         self.should_be_add_button()
-        self.add_product_to_basket()
+
+        btn = self.browser.find_element(*ProductPageLocators.BTN_ADD_TO_BASKET)
+        btn.click()
+        self.solve_quiz_and_get_code()
+
+        self.should_be_success()
+        self.check_success_message()
 
     def should_be_add_button(self):
         assert self.is_element_present(*ProductPageLocators.BTN_ADD_TO_BASKET), "Button 'Add to basket' is not " \
